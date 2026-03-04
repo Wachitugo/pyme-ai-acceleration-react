@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 
-export default function Header({ page, setPage, openModal, openChat }) {
+export default function Header({ openModal, openChat }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -22,22 +22,9 @@ export default function Header({ page, setPage, openModal, openChat }) {
         setMobileMenuOpen(!mobileMenuOpen);
     };
 
-    // Mobile menu styles when open
-    const mobileNavStyles = mobileMenuOpen ? {
-        display: 'flex',
-        position: 'absolute',
-        top: '100%',
-        left: '0',
-        width: '100%',
-        flexDirection: 'column',
-        background: 'rgba(255, 255, 255, 0.95)',
-        padding: '2rem',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(0,0,0,0.1)'
-    } : {};
 
-    const handleNavClick = (targetPage, hash) => {
-        setPage(targetPage);
+
+    const handleNavClick = (hash) => {
         setMobileMenuOpen(false);
         if (hash) {
             setTimeout(() => {
@@ -52,22 +39,13 @@ export default function Header({ page, setPage, openModal, openChat }) {
     return (
         <header className={scrolled ? 'scrolled' : ''}>
             <nav className="container">
-                <a href="#" className="logo" onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}><span className="gradient-text">REDPY</span> AI</a>
+                <a href="#" className="logo" onClick={(e) => { e.preventDefault(); handleNavClick(); }}><span className="gradient-text">REDPY</span> AI</a>
 
-                <div className="nav-links" style={window.innerWidth <= 900 ? mobileNavStyles : undefined}>
-                    {page === 'home' ? (
-                        <>
-                            <a href="#servicios" onClick={() => setMobileMenuOpen(false)}>Soluciones</a>
-                            <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Por qué REDPY</a>
-                            <a href="#proceso" onClick={() => setMobileMenuOpen(false)}>Cómo funciona</a>
-                            <a href="#contacto" className="btn-primary" onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); openChat(); }}>Contacto WhatsApp</a>
-                        </>
-                    ) : (
-                        <>
-                            <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}>Volver al Inicio</a>
-                            <a href="#contacto" className="btn-primary" onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); openChat(); }}>Contacto WhatsApp</a>
-                        </>
-                    )}
+                <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+                    <a href="#servicios" onClick={() => setMobileMenuOpen(false)}>Soluciones</a>
+                    <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Por qué REDPY</a>
+                    <a href="#proceso" onClick={() => setMobileMenuOpen(false)}>Cómo funciona</a>
+                    <a href="#contacto" className="btn-primary" onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); openChat(); }}>Contacto WhatsApp</a>
                 </div>
 
                 <button className="mobile-menu-btn" aria-label="Menu" onClick={toggleMobileMenu}>

@@ -267,6 +267,8 @@ nav {
   gap: 1rem;
   margin-top: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
+  /* allow wrapping on smaller screens */
 }
 
 /* 
@@ -970,11 +972,48 @@ nav {
 
   .nav-links {
     display: none;
-    /* Add mobile menu logic later if needed or plain collapse */
+  }
+
+  .nav-links.mobile-open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    align-items: center;
+    /* Center standard links */
+    gap: 1.5rem;
+    /* Add spacing for column */
+  }
+
+  .nav-links a.btn-primary {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    /* Full width button on mobile menu */
   }
 
   .mobile-menu-btn {
     display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .cta-group .btn-primary,
+  .cta-group .btn-secondary {
+    width: 100%;
+    justify-content: center;
   }
 }
 

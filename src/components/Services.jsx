@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Car, Scale, Utensils, Building2, Zap, ArrowRight, MousePointerClick } from 'lucide-react';
+import { Car, Scale, Utensils, Building2, Zap, ArrowRight } from 'lucide-react';
 
 const industries = [
     {

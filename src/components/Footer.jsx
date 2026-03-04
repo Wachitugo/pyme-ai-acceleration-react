@@ -1,7 +1,7 @@
 import React from 'react';
 import { Linkedin, Instagram, MapPin, Phone, Mail, Network } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ openLegalModal }) {
     return (
         <footer className="site-footer">
             <div className="container">
@@ -57,8 +57,8 @@ export default function Footer() {
                         © 2026 REDPY.cl - Todos los derechos reservados.
                     </div>
                     <div className="legal-links">
-                        <a href="#">Privacidad</a>
-                        <a href="#">Términos</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); openLegalModal('privacy'); }}>Privacidad</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); openLegalModal('terms'); }}>Términos</a>
                     </div>
                 </div>
             </div>

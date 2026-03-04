@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { X, Send, CheckCircle } from 'lucide-react';
 
-export default function ContactModal({ isOpen, onClose }) {
+export default function ContactModal({ isOpen, onClose, openLegalModal }) {
     const [formData, setFormData] = useState({
         name: '',
         company: '',
         email: '',
-        interest: 'automation'
+        interest: 'automation',
+        acceptTerms: false
     });
 
     const handleSubmit = (e) => {
@@ -18,9 +19,10 @@ export default function ContactModal({ isOpen, onClose }) {
     };
 
     const handleChange = (e) => {
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         });
     };
 
@@ -115,6 +117,21 @@ export default function ContactModal({ isOpen, onClose }) {
                                     <option value="analysis">Gastronomía y Turismo</option>
                                     <option value="consulting">Construcción e Inmobiliaria</option>
                                 </select>
+                            </div>
+
+                            <div className="modal-form-group" style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', marginTop: '1rem' }}>
+                                <input
+                                    type="checkbox"
+                                    id="acceptTerms"
+                                    name="acceptTerms"
+                                    checked={formData.acceptTerms}
+                                    onChange={handleChange}
+                                    required
+                                    style={{ width: 'auto', marginTop: '4px' }}
+                                />
+                                <label htmlFor="acceptTerms" style={{ fontSize: '0.8rem', lineHeight: '1.4' }}>
+                                    Acepto las <a href="#" onClick={(e) => { e.preventDefault(); openLegalModal('privacy'); }} style={{ color: 'var(--primary)' }}>Políticas de Privacidad</a> y consiento que REDPY me contacte. No compartiremos tus datos con terceros.
+                                </label>
                             </div>
 
                             <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '1rem' }}>
