@@ -15,7 +15,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #020617; /* slate-950 */
+    background-color: #020617;
   }
   body {
     background-color: #020617;
@@ -25,6 +25,14 @@
   ::selection {
     background-color: #dc2626;
     color: #ffffff;
+  }
+}
+
+@layer components {
+  .input-dark {
+    @apply w-full px-4 py-3 bg-slate-900 border border-slate-800 text-white
+           placeholder:text-slate-600 text-sm font-light outline-none
+           focus:border-red-600 transition-colors;
   }
 }
 
