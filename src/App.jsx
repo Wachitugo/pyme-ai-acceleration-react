@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import PainPoints from './components/PainPoints';
 import Services from './components/Services';
 import Features from './components/Features';
-
 import Process from './components/Process';
-
+import Stats from './components/Stats';
 import Footer from './components/Footer';
 import Background from './components/Background';
-
-import ChatAssistant from './components/ChatAssistant';
 import ContactModal from './components/ContactModal';
 import LegalModal from './components/LegalModal';
 
@@ -34,7 +31,7 @@ const TERMS_TEXT = `
   <strong>Términos de Servicio de REDPY</strong><br/><br/>
   Bienvenido a REDPY. Al utilizar nuestro sitio web y servicios, aceptas los siguientes Términos de Servicio.<br/><br/>
   <strong>1. Descripción del Servicio:</strong><br/>
-  REDPY proporciona consultoría e implementación de soluciones de Inteligencia Artificial para Pymes. Toda la información en este sitio es representativa y las soluciones se cotizan a medida de cada cliente.<br/><br/>
+  REDPY proporciona consultoría e implementación de soluciones de Inteligencia Artificial para Empresas. Toda la información en este sitio es representativa y las soluciones se cotizan a medida de cada cliente.<br/><br/>
   <strong>2. Uso del Sitio:</strong><br/>
   El contenido de este sitio web es para información general. Está sujeto a cambios sin previo aviso.<br/><br/>
   <strong>3. Propiedad Intelectual:</strong><br/>
@@ -48,8 +45,6 @@ const TERMS_TEXT = `
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Legal Modal
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [legalModalContent, setLegalModalContent] = useState({ title: '', content: '' });
 
@@ -61,55 +56,32 @@ function App() {
     }
     setLegalModalOpen(true);
   };
-  const closeLegalModal = () => setLegalModalOpen(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Chat Assistant State
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const toggleChat = () => setIsChatOpen(!isChatOpen);
-  const openChat = () => setIsChatOpen(true);
-
-  // Mouse move effect hook
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      document.querySelectorAll('.service-card').forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-      });
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, []); // Re-attach when page changes as new elements might appear
-
-  // Initialize scroll animation
   useScrollAnimation();
 
   return (
     <>
       <Background />
-      <Header openModal={openModal} openChat={openChat} />
+      <Header openModal={openModal} />
 
       <main>
         <Hero openModal={openModal} />
+        <Stats />
         <PainPoints />
         <Services />
         <Features />
         <Process openModal={openModal} />
       </main>
 
-      <ChatAssistant isOpen={isChatOpen} toggleChat={toggleChat} />
       <ContactModal isOpen={isModalOpen} onClose={closeModal} openLegalModal={openLegalModal} />
       <Footer openLegalModal={openLegalModal} />
 
       <LegalModal
         isOpen={legalModalOpen}
-        onClose={closeLegalModal}
+        onClose={() => setLegalModalOpen(false)}
         title={legalModalContent.title}
         content={legalModalContent.content}
       />

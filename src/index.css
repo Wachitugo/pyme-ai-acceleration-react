@@ -1,11 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
+  --font-sans: "Inter", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #dc2626;
+
   --animate-first: moveVertical 30s ease infinite;
   --animate-second: moveInCircle 20s reverse infinite;
   --animate-third: moveInCircle 40s linear infinite;
   --animate-fourth: moveHorizontal 40s ease infinite;
   --animate-fifth: moveInCircle 20s ease infinite;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #020617; /* slate-950 */
+  }
+  body {
+    background-color: #020617;
+    color: #f1f5f9;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background-color: #dc2626;
+    color: #ffffff;
+  }
 }
 
 /* ----------------------------------

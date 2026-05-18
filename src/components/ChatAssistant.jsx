@@ -10,7 +10,7 @@ const quickReplies = [
 
 export default function ChatAssistant({ isOpen, toggleChat }) {
     const [messages, setMessages] = useState([
-        { id: 1, text: "¡Hola! Soy el asistente virtual de REDPY AI. ¿En qué puedo ayudarte a potenciar tu Pyme hoy?", sender: 'bot', time: new Date() }
+        { id: 1, text: "¡Hola! Soy el asistente virtual de REDPY AI. ¿En qué puedo ayudarte a potenciar tu Empresa hoy?", sender: 'bot', time: new Date() }
     ]);
     const [inputValue, setInputValue] = useState("");
     const [isTyping, setIsTyping] = useState(false);
@@ -73,7 +73,7 @@ export default function ChatAssistant({ isOpen, toggleChat }) {
 
         setTimeout(() => {
             const botResponses = [
-                "¡Excelente pregunta! En REDPY nos especializamos en automatizar procesos para pymes chilenas.",
+                "¡Excelente pregunta! En REDPY nos especializamos en automatizar procesos para empresas chilenas.",
                 "Podemos automatizar ese proceso para ahorrarte horas de trabajo manual cada semana.",
                 "Esa es una gran oportunidad para implementar IA en tu negocio. ¿Te cuento más?",
                 "¿Te gustaría agendar una demo de 15 minutos para verlo en acción? Es sin costo.",

@@ -1,103 +1,149 @@
-import React from 'react';
-import { Link, Code, Rocket, Zap } from 'lucide-react';
+import { useRef, useEffect } from 'react';
+import { ChevronRight } from 'lucide-react';
+import {
+    LinkSimpleIcon,
+    CodeIcon,
+    RocketLaunchIcon,
+} from '@phosphor-icons/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const steps = [
+    {
+        id: '01', Icon: LinkSimpleIcon, title: 'Conexión',
+        description: 'Identificamos tus procesos críticos (esos que hoy haces "a mano"). Entendemos el ADN de tu negocio.',
+        tags: ['Diagnóstico', 'Mapeo', 'Análisis'],
+        iconColor: 'text-red-500',
+        glow: 'drop-shadow(0 4px 14px rgba(239,68,68,0.5))',
+        dot: 'bg-red-500',
+    },
+    {
+        id: '02', Icon: CodeIcon, title: 'Desarrollo',
+        description: 'Implementamos la herramienta de IA que mejor se adapte a tu presupuesto y meta. Sin complicaciones.',
+        tags: ['IA Custom', 'Sin código', 'Integración'],
+        iconColor: 'text-violet-400',
+        glow: 'drop-shadow(0 4px 14px rgba(167,139,250,0.5))',
+        dot: 'bg-violet-400',
+    },
+    {
+        id: '03', Icon: RocketLaunchIcon, title: 'Optimización',
+        description: 'Liberamos tu tiempo manual para que te enfoques en lo que realmente importa: hacer crecer tu negocio.',
+        tags: ['Automatización', 'ROI', 'Crecimiento'],
+        iconColor: 'text-emerald-400',
+        glow: 'drop-shadow(0 4px 14px rgba(52,211,153,0.5))',
+        dot: 'bg-emerald-400',
+    },
+];
 
 export default function Process({ openModal }) {
-    return (
-        <section id="proceso" className="py-16 sm:py-24 md:py-32 bg-white relative overflow-hidden">
-            
-            {/* Background Decorations Premium (Ajustados para fondo claro) */}
-            <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-[600px] h-[600px] bg-indigo-100/50 rounded-full blur-[100px] pointer-events-none"></div>
-            
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full relative z-10">
+    const sectionRef = useRef(null);
 
-                {/* Header Título */}
-                <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 md:mb-28" data-animate="slide-up">
-                    <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-700 text-xs sm:text-sm font-medium mb-6 shadow-sm">
-                        <Zap size={16} className="text-blue-600" />
-                        <span className="tracking-wide uppercase text-xs">Simple y Eficiente</span>
-                    </div>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-4 sm:mb-6 text-slate-900 leading-[1.1]">
-                        Nuestro <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Proceso</span>
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from('.process-header', {
+                opacity: 0, y: 40, duration: 0.8, ease: 'power3.out',
+                scrollTrigger: { trigger: '.process-header', start: 'top 80%', once: true },
+            });
+
+            const stepEls = sectionRef.current?.querySelectorAll('.process-step');
+            if (stepEls?.length) {
+                gsap.fromTo(stepEls,
+                    { opacity: 0, y: 28, scale: 0.94 },
+                    {
+                        opacity: 1, y: 0, scale: 1,
+                        duration: 0.65, stagger: 0.1, ease: 'back.out(1.4)', clearProps: 'all',
+                        scrollTrigger: { trigger: '.process-grid', start: 'top 80%', once: true },
+                    }
+                );
+            }
+
+            gsap.from('.process-cta', {
+                opacity: 0, y: 40, duration: 0.8, ease: 'power3.out',
+                scrollTrigger: { trigger: '.process-cta', start: 'top 85%', once: true },
+            });
+        }, sectionRef);
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <section ref={sectionRef} id="proceso" className="py-20 sm:py-28 md:py-36 bg-slate-950 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-20 pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+
+                {/* Header */}
+                <div className="process-header text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+                    <span className="text-red-500 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.4em] mb-5 block">Simple y Eficiente</span>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-[0.92] mb-6">
+                        Nuestro <span className="text-red-600">Proceso</span>
                     </h2>
-                    <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-medium">
+                    <p className="text-base sm:text-lg text-slate-500 font-light leading-relaxed px-4 sm:px-0">
                         De la manualidad a la inteligencia artificial en tres pasos simples. Sin palabras complicadas, solo resultados.
                     </p>
                 </div>
 
-                {/* Grid del Proceso */}
-                <div className="grid md:grid-cols-3 gap-10 md:gap-8 relative">
-                    
-                    {/* Línea conectora Desktop */}
-                    <div className="hidden md:block absolute top-[48px] left-[15%] w-[70%] h-0.5 bg-gradient-to-r from-transparent via-blue-200 to-transparent z-0"></div>
+                {/* Steps */}
+                <div className="process-grid grid md:grid-cols-3 gap-0 bg-slate-900 border border-slate-800 mb-16 sm:mb-20">
+                    {steps.map((step, i) => {
+                        const { Icon, iconColor, glow, dot } = step;
+                        return (
+                            <div
+                                key={step.id}
+                                className={`process-step bg-slate-950 p-8 sm:p-10 hover:-translate-y-0.5 hover:bg-slate-900/80 transition-all duration-300 group ${i < steps.length - 1 ? 'border-b md:border-b-0 md:border-r border-slate-800' : ''}`}
+                            >
+                                {/* Icon row */}
+                                <div className="flex justify-between items-start mb-7">
+                                    <div className={`${iconColor}`} style={{ filter: glow }}>
+                                        <Icon size={38} weight="duotone" />
+                                    </div>
+                                    <span className="text-xl font-mono font-black text-slate-800">/{step.id}</span>
+                                </div>
 
-                    {/* Paso 1 */}
-                    <div className="relative z-10 flex flex-col items-center text-center group delay-100" data-animate="slide-up">
-                        {/* Nodo brillante para fondo claro */}
-                        <div className="relative w-24 h-24 mb-8 group-hover:-translate-y-2 transition-transform duration-300">
-                            {/* Resplandor expandido en hover */}
-                            <div className="absolute inset-0 bg-blue-400/20 rounded-2xl blur-xl group-hover:bg-blue-400/40 transition-all duration-500 scale-90 group-hover:scale-110"></div>
-                            <div className="relative w-full h-full rounded-2xl bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center justify-center text-blue-600 transition-colors duration-300 group-hover:bg-blue-50">
-                                <Link size={36} strokeWidth={1.5} />
-                            </div>
-                        </div>
-                        <div className="px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 font-mono text-blue-600 text-xs tracking-widest uppercase mb-4 shadow-sm">Paso 01</div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Conexión</h3>
-                        <p className="text-slate-600 leading-relaxed text-sm lg:text-base max-w-[280px]">
-                            Identificamos tus procesos críticos (esos que hoy haces 'a mano'). Entendemos el ADN de tu negocio.
-                        </p>
-                    </div>
+                                {/* Label */}
+                                <div className="flex items-center gap-1.5 mb-2">
+                                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dot}`} />
+                                    <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest">{step.title}</h3>
+                                </div>
 
-                    {/* Paso 2 */}
-                    <div className="relative z-10 flex flex-col items-center text-center group delay-300" data-animate="slide-up">
-                        <div className="relative w-24 h-24 mb-8 group-hover:-translate-y-2 transition-transform duration-300">
-                            <div className="absolute inset-0 bg-purple-400/20 rounded-2xl blur-xl group-hover:bg-purple-400/40 transition-all duration-500 scale-90 group-hover:scale-110"></div>
-                            <div className="relative w-full h-full rounded-2xl bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center justify-center text-purple-600 transition-colors duration-300 group-hover:bg-purple-50">
-                                <Code size={36} strokeWidth={1.5} />
-                            </div>
-                        </div>
-                        <div className="px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 font-mono text-purple-600 text-xs tracking-widest uppercase mb-4 shadow-sm">Paso 02</div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Desarrollo</h3>
-                        <p className="text-slate-600 leading-relaxed text-sm lg:text-base max-w-[280px]">
-                            Implementamos la herramienta de IA que mejor se adapte a tu presupuesto y meta. Sin complicaciones.
-                        </p>
-                    </div>
+                                <p className="text-slate-400 leading-relaxed font-light text-sm mb-7">{step.description}</p>
 
-                    {/* Paso 3 */}
-                    <div className="relative z-10 flex flex-col items-center text-center group delay-500" data-animate="slide-up">
-                        <div className="relative w-24 h-24 mb-8 group-hover:-translate-y-2 transition-transform duration-300">
-                            <div className="absolute inset-0 bg-indigo-400/20 rounded-2xl blur-xl group-hover:bg-indigo-400/40 transition-all duration-500 scale-90 group-hover:scale-110"></div>
-                            <div className="relative w-full h-full rounded-2xl bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center justify-center text-indigo-600 transition-colors duration-300 group-hover:bg-indigo-50">
-                                <Rocket size={36} strokeWidth={1.5} />
+                                <div className="flex flex-wrap gap-2">
+                                    {step.tags.map(tag => (
+                                        <span key={tag} className="text-[9px] px-2 py-0.5 bg-red-950/30 text-red-500 border border-red-900/40 font-black uppercase tracking-widest">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                        <div className="px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 font-mono text-indigo-600 text-xs tracking-widest uppercase mb-4 shadow-sm">Paso 03</div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Optimización</h3>
-                        <p className="text-slate-600 leading-relaxed text-sm lg:text-base max-w-[280px]">
-                            Liberamos tu tiempo manual para que te enfoques en lo que realmente importa: hacer crecer tu negocio.
-                        </p>
-                    </div>
+                        );
+                    })}
                 </div>
 
-                {/* Banner Call to Action Mantiene un contraste elegante (pero fondo azul corporativo en vez de negro) */}
-                <div className="mt-16 sm:mt-24 md:mt-32 max-w-5xl mx-auto bg-gradient-to-br from-blue-900 to-indigo-900 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-10 md:p-16 text-center shadow-2xl shadow-blue-900/20 relative overflow-hidden group" data-animate="scale-up">
-
-                    {/* Focos de luz interiores Premium */}
-                    <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-[80px] -mr-20 -mt-20 pointer-events-none group-hover:bg-white/20 transition-all duration-700"></div>
-                    <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-400/20 rounded-full blur-[80px] -ml-20 -mb-20 pointer-events-none group-hover:bg-blue-400/30 transition-all duration-700"></div>
-
-                    <div className="relative z-10 flex flex-col items-center">
-                        <h3 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-4 sm:mb-6 tracking-tight leading-[1.1]">
-                            ¿Listo/a para empezar tu transformación?
-                        </h3>
-                        <p className="text-blue-100 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto font-medium">
-                            No esperes a que la competencia adopte estas tecnologías y automatice su operación antes que tú. El momento es ahora.
-                        </p>
+                {/* CTA */}
+                <div
+                    className="process-cta p-8 sm:p-12 md:p-16 relative overflow-hidden"
+                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+                >
+                    <div className="absolute inset-0 bg-red-600/80 mix-blend-multiply" />
+                    <div className="absolute inset-0 bg-slate-950/30" />
+                    <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12">
+                        <div className="flex-1">
+                            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase leading-[0.9] tracking-tighter mb-4">
+                                ¿Listo/a para empezar<br />
+                                <span className="text-white/50">tu transformación?</span>
+                            </h3>
+                            <p className="text-red-100 text-sm sm:text-base font-light max-w-lg">
+                                No esperes a que la competencia adopte estas tecnologías antes que tú. El momento es ahora.
+                            </p>
+                        </div>
                         <button
-                            className="inline-flex items-center justify-center bg-white text-blue-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                            className="flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-slate-950 text-white font-black uppercase tracking-widest text-xs sm:text-sm hover:bg-white hover:text-slate-950 transition-all shadow-2xl shrink-0"
                             onClick={(e) => { e.preventDefault(); openModal(); }}
                         >
                             Agenda una Asesoría Gratuita
+                            <ChevronRight size={16} />
                         </button>
                     </div>
                 </div>

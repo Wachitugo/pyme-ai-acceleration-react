@@ -1,6 +1,6 @@
-# pyme-ai-acceleration-react
+# enterprise-ai-acceleration-react
 
-Project for PYME AI Acceleration using React and Vite.
+Project for Enterprise AI Acceleration using React and Vite.
 
 ## Prerequisites
 
