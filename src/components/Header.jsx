@@ -62,10 +62,9 @@ export default function Header({ openModal }) {
                 {/* Desktop Nav */}
                 <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
                     {[
-                        { label: 'Desafíos', hash: '#desafios' },
-                        { label: 'Soluciones', hash: '#servicios' },
-                        { label: 'Por qué REDPY', hash: '#nosotros' },
-                        { label: 'Proceso', hash: '#proceso' },
+                        { label: 'Misión',     hash: '#mision'    },
+                        { label: 'Pilares',    hash: '#pilares'   },
+                        { label: 'Soluciones', hash: '#soluciones' },
                     ].map(({ label, hash }) => (
                         <a
                             key={hash}
@@ -84,7 +83,7 @@ export default function Header({ openModal }) {
                         className="hidden md:inline-flex items-center justify-center px-6 py-2.5 border border-red-600/50 text-red-500 text-[11px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all"
                         onClick={(e) => { e.preventDefault(); openModal(); }}
                     >
-                        Contacto WhatsApp
+                        Consultoría
                     </button>
                     <button
                         className="md:hidden p-2 text-white"
@@ -99,10 +98,9 @@ export default function Header({ openModal }) {
             {mobileMenuOpen && (
                 <div className="md:hidden bg-slate-950 border-b border-slate-800 px-4 pt-2 pb-6 flex flex-col gap-4">
                     {[
-                        { label: 'Desafíos', hash: '#desafios' },
-                        { label: 'Soluciones', hash: '#servicios' },
-                        { label: 'Por qué REDPY', hash: '#nosotros' },
-                        { label: 'Proceso', hash: '#proceso' },
+                        { label: 'Misión',     hash: '#mision'    },
+                        { label: 'Pilares',    hash: '#pilares'   },
+                        { label: 'Soluciones', hash: '#soluciones' },
                     ].map(({ label, hash }) => (
                         <a
                             key={hash}
@@ -115,9 +113,9 @@ export default function Header({ openModal }) {
                     ))}
                     <button
                         className="mt-2 w-full px-6 py-3 bg-red-600 text-white text-xs font-black uppercase tracking-widest"
-                        onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); openChat(); }}
+                        onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); openModal(); }}
                     >
-                        Contacto WhatsApp
+                        Consultoría
                     </button>
                 </div>
             )}

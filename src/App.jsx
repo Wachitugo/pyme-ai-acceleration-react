@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import PainPoints from './components/PainPoints';
-import Services from './components/Services';
-import Features from './components/Features';
-import Process from './components/Process';
-import Stats from './components/Stats';
+import MisionSection from './components/MisionSection';
+import PilaresSection from './components/PilaresSection';
+import SolucionesSection from './components/SolucionesSection';
+import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import Background from './components/Background';
 import ContactModal from './components/ContactModal';
@@ -68,12 +67,11 @@ function App() {
       <Header openModal={openModal} />
 
       <main>
-        <Hero openModal={openModal} />
-        <Stats />
-        <PainPoints />
-        <Services />
-        <Features />
-        <Process openModal={openModal} />
+        <Hero />
+        <MisionSection />
+        <PilaresSection />
+        <SolucionesSection openModal={openModal} />
+        <ContactSection openModal={openModal} />
       </main>
 
       <ContactModal isOpen={isModalOpen} onClose={closeModal} openLegalModal={openLegalModal} />
