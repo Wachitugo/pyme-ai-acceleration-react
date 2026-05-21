@@ -80,9 +80,9 @@ export default function Footer({ openLegalModal }) {
                                 <Phone size={13} className="text-red-600 shrink-0" />
                                 +56 9 87618340
                             </a>
-                            <a href="mailto:hola@redpy.cl" className="flex items-center gap-2 text-slate-400 font-light normal-case hover:text-red-400 transition-colors">
+                            <a href="mailto:aibaceta@redpy.org" className="flex items-center gap-2 text-slate-400 font-light normal-case hover:text-red-400 transition-colors">
                                 <Mail size={13} className="text-red-600 shrink-0" />
-                                hola@redpy.cl
+                                aibaceta@redpy.org
                             </a>
                         </div>
                     </div>
