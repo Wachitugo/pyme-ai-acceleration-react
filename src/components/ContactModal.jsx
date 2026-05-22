@@ -83,7 +83,7 @@ export default function ContactModal({ isOpen, onClose, openLegalModal }) {
                     {/* Title — short on mobile, full on sm+ */}
                     <div className="relative z-10 flex-1 sm:flex-none sm:mt-8">
                         <p className="text-[9px] font-black uppercase tracking-[0.35em] text-red-200 mb-2 hidden sm:block">
-                            Consultoría Gratuita
+                            Asesoría Especializada
                         </p>
                         <h3 className="font-black uppercase tracking-tight leading-[0.92] text-white
                             text-lg sm:text-[1.4rem] lg:text-[1.65rem]">
@@ -96,7 +96,7 @@ export default function ContactModal({ isOpen, onClose, openLegalModal }) {
                     {/* Checklist — desktop only */}
                     <div className="relative z-10 hidden sm:flex flex-col gap-4 mt-auto pt-6 border-t border-white/10 w-full">
                         {[
-                            { title: 'Evaluación Gratuita', desc: 'Sin costo, sin compromisos.' },
+                            { title: 'Evaluación sin costo', desc: 'Sin compromisos.' },
                             { title: 'Plan a Medida',       desc: 'Estrategia personalizada.' },
                             { title: 'ROI Proyectado',      desc: 'Claridad en tu retorno.' },
                         ].map((item) => (
@@ -104,7 +104,7 @@ export default function ContactModal({ isOpen, onClose, openLegalModal }) {
                                 <CheckCircle size={13} className="text-white/40 shrink-0 mt-0.5" />
                                 <div>
                                     <p className="text-[10px] font-black text-white uppercase tracking-wide leading-none mb-0.5">{item.title}</p>
-                                    <p className="text-red-200/70 text-[10px] font-light">{item.desc}</p>
+                                    <p className="text-white/75 text-[10px] font-medium">{item.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -182,7 +182,7 @@ export default function ContactModal({ isOpen, onClose, openLegalModal }) {
                                     className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-red-600 text-white font-black uppercase tracking-widest text-xs sm:text-sm hover:bg-red-700 active:scale-[0.98] transition-all disabled:opacity-60 disabled:cursor-not-allowed mt-2">
                                     {isSubmitting
                                         ? <><Loader2 size={16} className="animate-spin" /> Enviando...</>
-                                        : <>Solicitar Auditoría Gratuita <ChevronRight size={15} /></>}
+                                        : <>Solicitar Asesoría Especializada <ChevronRight size={15} /></>}
                                 </button>
                             </form>
                         )}

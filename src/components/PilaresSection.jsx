@@ -58,12 +58,12 @@ export default function PilaresSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="pilares" className="py-20 sm:py-28 md:py-36 bg-slate-950 border-b border-slate-900 relative overflow-hidden">
+        <section ref={sectionRef} id="pilares" className="py-14 sm:py-20 md:py-24 bg-slate-950 border-b border-slate-900 relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-20 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
 
-                <div className="pilares-header text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+                <div className="pilares-header text-center max-w-2xl mx-auto mb-10 sm:mb-12">
                     <span className="text-red-500 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.4em] mb-5 block">Nuestros Pilares</span>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-[0.92] mb-6">
                         Arquitectura de <span className="text-red-600">Alto Impacto</span>
@@ -78,16 +78,17 @@ export default function PilaresSection() {
                                 key={pillar.id}
                                 className={`pilar-card bg-slate-950 p-8 sm:p-10 hover:-translate-y-0.5 hover:bg-slate-900/80 transition-all duration-300 group ${i < pillars.length - 1 ? 'border-b md:border-b-0 md:border-r border-slate-800' : ''}`}
                             >
-                                <div className="flex justify-between items-start mb-7">
-                                    <div className={iconColor} style={{ filter: glow }}>
-                                        <Icon size={38} strokeWidth={1.5} />
+                                <div className="flex items-center justify-between mb-6">
+                                    <div className="flex items-center gap-3">
+                                        <div className={`shrink-0 ${iconColor}`} style={{ filter: glow }}>
+                                            <Icon size={32} strokeWidth={1.5} />
+                                        </div>
+                                        <div className="flex items-center gap-1.5">
+                                            <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dot}`} />
+                                            <h3 className="text-sm font-black text-slate-300 uppercase tracking-widest">{pillar.title}</h3>
+                                        </div>
                                     </div>
-                                    <span className="text-xl font-mono font-black text-slate-800">/{pillar.id}</span>
-                                </div>
-
-                                <div className="flex items-center gap-1.5 mb-2">
-                                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dot}`} />
-                                    <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest">{pillar.title}</h3>
+                                    <span className="text-lg font-mono font-black text-slate-800 shrink-0">/{pillar.id}</span>
                                 </div>
 
                                 <p className="text-slate-400 leading-relaxed font-light text-sm mb-7">{pillar.description}</p>

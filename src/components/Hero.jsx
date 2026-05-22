@@ -2,80 +2,8 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 
-const img1 = new URL('../assets/image.png',         import.meta.url).href;
-const img2 = new URL('../assets/image copy.png',    import.meta.url).href;
-const img3 = new URL('../assets/image copy 2.png',  import.meta.url).href;
-
-const screens = [
-    { src: img1, alt: 'Vista 1' },
-    { src: img2, alt: 'Vista 2' },
-    { src: img3, alt: 'Vista 3' },
-];
-
-function LaptopMockup({ activeIndex }) {
-    return (
-        <div className="w-full max-w-3xl mx-auto select-none">
-            {/* Lid */}
-            <div className="relative bg-gradient-to-b from-slate-700 to-slate-800 rounded-t-2xl pt-3 px-3 pb-0 border border-slate-600/60 shadow-[0_30px_80px_-10px_rgba(0,0,0,0.8)]">
-                {/* Camera */}
-                <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-slate-600/80" />
-
-                {/* Screen inner */}
-                <div className="bg-slate-950 rounded-t-lg overflow-hidden border border-slate-900/80">
-                    {/* Browser bar */}
-                    <div className="bg-slate-900 px-3 py-2 flex items-center gap-2 border-b border-slate-800">
-                        <div className="flex gap-1.5 shrink-0">
-                            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-slate-600/80" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-slate-600/80" />
-                        </div>
-                        <div className="flex-1 mx-2 bg-slate-800 rounded-full px-3 py-0.5 text-[9px] text-slate-500 font-mono tracking-wide">
-                            redpy.cl
-                        </div>
-                    </div>
-
-                    {/* Screen content — 16:9 */}
-                    <div className="relative overflow-hidden" style={{ aspectRatio: '16/9' }}>
-                        {screens.map((screen, i) => (
-                            <img
-                                key={i}
-                                src={screen.src}
-                                alt={screen.alt}
-                                className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 ease-in-out ${
-                                    i === activeIndex ? 'opacity-100' : 'opacity-0'
-                                }`}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* Hinge */}
-            <div className="h-1.5 bg-slate-600 mx-3 shadow-md" />
-
-            {/* Base / keyboard */}
-            <div className="bg-gradient-to-b from-slate-700 to-slate-800 h-6 rounded-b-2xl border-x border-b border-slate-600/60 flex items-center justify-center shadow-xl">
-                <div className="w-14 h-0.5 bg-slate-600/60 rounded-full" />
-            </div>
-
-            {/* Dot indicators */}
-            <div className="flex items-center justify-center gap-2 mt-5">
-                {screens.map((_, i) => (
-                    <div
-                        key={i}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                            i === activeIndex ? 'w-5 bg-red-500' : 'w-1.5 bg-slate-700'
-                        }`}
-                    />
-                ))}
-            </div>
-        </div>
-    );
-}
-
 export default function Hero() {
     const [typedText, setTypedText] = useState('');
-    const [activeIndex, setActiveIndex] = useState(0);
     const fullText = "Trasciende tus Límites.";
     const sectionRef = useRef(null);
 
@@ -86,7 +14,6 @@ export default function Hero() {
               .from('.hero-title',  { opacity: 0, y: 48, duration: 0.8, ease: 'power3.out' }, '-=0.3')
               .from('.hero-desc',   { opacity: 0, y: 32, duration: 0.7, ease: 'power3.out' }, '-=0.5')
               .from('.hero-btns',   { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.4')
-              .from('.hero-mockup', { opacity: 0, y: 60, duration: 1,   ease: 'power3.out' }, '-=0.3')
               .from('.hero-scroll', { scaleY: 0, opacity: 0, duration: 0.8, ease: 'power2.out', transformOrigin: 'top' }, '-=0.5');
         }, sectionRef);
         return () => ctx.revert();
@@ -106,11 +33,6 @@ export default function Hero() {
     }, [fullText]);
 
     useEffect(() => { const c = startTypewriter(); return c; }, [startTypewriter]);
-
-    useEffect(() => {
-        const iv = setInterval(() => setActiveIndex(p => (p + 1) % screens.length), 4000);
-        return () => clearInterval(iv);
-    }, []);
 
     const renderStyledText = () => {
         const breakIdx = "Trasciende tus ".length;
@@ -144,12 +66,12 @@ export default function Hero() {
 
                 {/* Badge */}
                 <div className="hero-badge inline-block px-4 py-1.5 bg-red-600 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.25em] mb-8 sm:mb-10 text-white">
-                    Socios Estratégicos en IA · Chile
+                    Socios Estratégicos en Inteligencia Artificial
                 </div>
 
                 {/* Title */}
                 <h1
-                    className="hero-title text-[2.4rem] sm:text-6xl md:text-7xl lg:text-[88px] font-black text-white leading-[0.9] tracking-tighter mb-8 sm:mb-10 uppercase cursor-pointer max-w-5xl min-h-[5.5rem] sm:min-h-[8rem] md:min-h-[10rem] lg:min-h-[13rem]"
+                    className="hero-title text-[2.4rem] sm:text-6xl md:text-7xl lg:text-[88px] font-black text-white leading-[0.9] tracking-tighter uppercase cursor-pointer max-w-5xl min-h-[5.5rem] sm:min-h-[8rem] md:min-h-[10rem] lg:min-h-[13rem]"
                     onClick={startTypewriter}
                     title="Haz clic para repetir"
                 >
@@ -180,10 +102,6 @@ export default function Hero() {
                     </a>
                 </div>
 
-                {/* Laptop mockup */}
-                <div className="hero-mockup mt-14 sm:mt-16 md:mt-20 w-full max-w-3xl lg:max-w-4xl">
-                    <LaptopMockup activeIndex={activeIndex} />
-                </div>
             </div>
 
             {/* Scroll indicator */}

@@ -19,7 +19,7 @@ export default function ContactSection({ openModal }) {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-20 sm:py-28 bg-slate-950 relative overflow-hidden">
+        <section ref={sectionRef} className="py-14 sm:py-20 bg-slate-950 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
                 <div
                     className="contact-cta p-8 sm:p-12 md:p-16 relative overflow-hidden"

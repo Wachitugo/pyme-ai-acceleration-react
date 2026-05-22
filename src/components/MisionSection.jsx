@@ -30,11 +30,11 @@ export default function MisionSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="mision" className="py-20 sm:py-28 md:py-36 bg-slate-950 border-y border-slate-900 relative overflow-hidden">
+        <section ref={sectionRef} id="mision" className="py-14 sm:py-20 md:py-24 bg-slate-950 border-y border-slate-900 relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-20 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 xl:gap-24 items-center">
+                <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 xl:gap-16 items-center">
 
                     {/* 2x2 icon grid */}
                     <div className="mision-grid grid grid-cols-2 gap-px bg-slate-800 border border-slate-800 order-2 lg:order-1">
@@ -55,23 +55,24 @@ export default function MisionSection() {
 
                     {/* Text */}
                     <div className="mision-text order-1 lg:order-2">
-                        <span className="text-red-500 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.4em] mb-6 block">
+                        <span className="text-red-500 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.4em] mb-4 block">
                             Misión Corporativa
                         </span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-6xl font-black text-white leading-[0.92] mb-8 uppercase tracking-tighter">
-                            Empoderamos para <br />
-                            <span className="text-red-600">decidir el futuro</span>.
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-6xl font-black text-white leading-[0.92] mb-5 uppercase tracking-tighter">
+                            Impulsar el <br />
+                            <span className="text-red-600">máximo potencial.</span>
                         </h2>
 
-                        <div className="pl-5 border-l border-red-600 mb-8 py-1">
+                        <div className="pl-5 border-l border-red-600 mb-5 py-1">
                             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-light italic">
-                                "Empoderar a las organizaciones para que trasciendan sus límites operacionales."
+                                "Impulsar el desarrollo de las organizaciones para que alcancen su máximo potencial."
                             </p>
                         </div>
 
                         <p className="text-base sm:text-lg text-slate-500 leading-relaxed font-light">
-                            No entregamos solo tecnología, entregamos resultados medibles que transforman datos complejos en{' '}
-                            <strong className="text-white font-semibold">valor estratégico tangible</strong>.
+                            Transformamos la visión de nuestros clientes en{' '}
+                            <strong className="text-white font-semibold">resultados de negocios medibles</strong>,
+                            aportando innovación, conocimiento tecnológico y valor en cada etapa de sus procesos.
                         </p>
                     </div>
                 </div>

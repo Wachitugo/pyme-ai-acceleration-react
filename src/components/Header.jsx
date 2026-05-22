@@ -60,11 +60,12 @@ export default function Header({ openModal }) {
                 </a>
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
+                <div className="hidden md:flex items-center gap-6 flex-1 justify-center">
                     {[
                         { label: 'Misión',     hash: '#mision'    },
                         { label: 'Pilares',    hash: '#pilares'   },
                         { label: 'Soluciones', hash: '#soluciones' },
+                        { label: 'Proceso',    hash: '#proceso'   },
                     ].map(({ label, hash }) => (
                         <a
                             key={hash}
@@ -83,7 +84,7 @@ export default function Header({ openModal }) {
                         className="hidden md:inline-flex items-center justify-center px-6 py-2.5 border border-red-600/50 text-red-500 text-[11px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all"
                         onClick={(e) => { e.preventDefault(); openModal(); }}
                     >
-                        Consultoría
+                        Asesoría
                     </button>
                     <button
                         className="md:hidden p-2 text-white"
@@ -101,6 +102,7 @@ export default function Header({ openModal }) {
                         { label: 'Misión',     hash: '#mision'    },
                         { label: 'Pilares',    hash: '#pilares'   },
                         { label: 'Soluciones', hash: '#soluciones' },
+                        { label: 'Proceso',    hash: '#proceso'   },
                     ].map(({ label, hash }) => (
                         <a
                             key={hash}
@@ -115,7 +117,7 @@ export default function Header({ openModal }) {
                         className="mt-2 w-full px-6 py-3 bg-red-600 text-white text-xs font-black uppercase tracking-widest"
                         onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); openModal(); }}
                     >
-                        Consultoría
+                        Asesoría
                     </button>
                 </div>
             )}

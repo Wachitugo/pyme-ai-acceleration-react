@@ -79,13 +79,13 @@ export default function SolucionesSection({ openModal }) {
     }, []);
 
     return (
-        <section ref={sectionRef} id="soluciones" className="py-20 sm:py-28 md:py-36 bg-slate-950 border-y border-slate-900 relative overflow-hidden">
+        <section ref={sectionRef} id="soluciones" className="py-14 sm:py-20 md:py-24 bg-slate-950 border-y border-slate-900 relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-20 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
 
                 {/* Header */}
-                <div className="sol-header mb-12 sm:mb-16 pl-6 sm:pl-8 border-l border-red-600">
+                <div className="sol-header mb-8 sm:mb-10 pl-6 sm:pl-8 border-l border-red-600">
                     <span className="text-red-500 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.4em] mb-4 block">Especialización</span>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5 uppercase tracking-tighter leading-[0.92]">
                         Plataformas Inteligentes

@@ -5,6 +5,7 @@ import MisionSection from './components/MisionSection';
 import PilaresSection from './components/PilaresSection';
 import SolucionesSection from './components/SolucionesSection';
 import ContactSection from './components/ContactSection';
+import Process from './components/Process';
 import Footer from './components/Footer';
 import Background from './components/Background';
 import ContactModal from './components/ContactModal';
@@ -22,7 +23,7 @@ const PRIVACY_TEXT = `
   <strong>3. Seguridad:</strong><br/>
   Implementamos medidas de seguridad estándar de la industria para proteger tus datos contra acceso no autorizado, alteración o divulgación.<br/><br/>
   <strong>4. Tus Derechos:</strong><br/>
-  Puedes solicitar el acceso, rectificación o eliminación de tus datos personales en cualquier momento escribiendo a hola@redpy.cl.<br/><br/>
+  Puedes solicitar el acceso, rectificación o eliminación de tus datos personales en cualquier momento escribiendo a aibaceta@redpy.org.<br/><br/>
   <em>Última actualización: Marzo 2026.</em>
 `;
 
@@ -38,7 +39,7 @@ const TERMS_TEXT = `
   <strong>4. Limitación de Responsabilidad:</strong><br/>
   Las propuestas y métricas mencionadas son ejemplos de casos reales y potenciales de la tecnología, pero los resultados pueden variar según el caso específico de cada cliente.<br/><br/>
   <strong>5. Contacto:</strong><br/>
-  Para cualquier duda, escríbenos a hola@redpy.cl.<br/><br/>
+  Para cualquier duda, escríbenos a aibaceta@redpy.org.<br/><br/>
   <em>Última actualización: Marzo 2026.</em>
 `;
 
@@ -71,6 +72,7 @@ function App() {
         <MisionSection />
         <PilaresSection />
         <SolucionesSection openModal={openModal} />
+        <Process />
         <ContactSection openModal={openModal} />
       </main>
 
