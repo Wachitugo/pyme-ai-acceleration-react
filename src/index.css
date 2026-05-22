@@ -180,3 +180,79 @@
   animation: slideUp 0.5s ease-out forwards;
   opacity: 0;
 }
+
+/* ============================
+   LIGHT MODE
+   ============================ */
+html.light,
+html.light body {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Backgrounds --- */
+html.light .bg-slate-950  { background-color: #f8fafc !important; }
+html.light .bg-slate-900  { background-color: #f1f5f9 !important; }
+html.light .bg-slate-800  { background-color: #e2e8f0 !important; }
+
+html.light .bg-slate-950\/95 { background-color: rgba(248,250,252,0.97) !important; }
+html.light .bg-slate-950\/75 { background-color: rgba(248,250,252,0.85) !important; }
+html.light .bg-slate-950\/60 { background-color: rgba(248,250,252,0.70) !important; }
+html.light .bg-slate-950\/40 { background-color: rgba(248,250,252,0.55) !important; }
+html.light .bg-slate-950\/30 { background-color: rgba(248,250,252,0.40) !important; }
+html.light .bg-slate-900\/80 { background-color: rgba(241,245,249,0.90) !important; }
+html.light .bg-slate-900\/60 { background-color: rgba(241,245,249,0.70) !important; }
+html.light .bg-red-950\/30  { background-color: rgba(254,202,202,0.35) !important; }
+
+/* --- Text --- */
+html.light .text-white   { color: #0f172a !important; }
+html.light .text-slate-300 { color: #334155 !important; }
+html.light .text-slate-400 { color: #475569 !important; }
+html.light .text-slate-500 { color: #64748b !important; }
+html.light .text-slate-600 { color: #94a3b8 !important; }
+html.light .text-slate-800 { color: #cbd5e1 !important; }
+
+html.light .text-white\/40 { color: rgba(15,23,42,0.40) !important; }
+html.light .text-white\/50 { color: rgba(15,23,42,0.50) !important; }
+html.light .text-white\/60 { color: rgba(15,23,42,0.60) !important; }
+html.light .text-white\/70 { color: rgba(15,23,42,0.70) !important; }
+html.light .text-white\/75 { color: rgba(15,23,42,0.75) !important; }
+
+/* --- Borders --- */
+html.light .border-slate-700    { border-color: #cbd5e1 !important; }
+html.light .border-slate-800    { border-color: #e2e8f0 !important; }
+html.light .border-slate-900    { border-color: #e8edf2 !important; }
+html.light .border-slate-800\/60 { border-color: rgba(226,232,240,0.8) !important; }
+html.light .border-white\/10    { border-color: rgba(15,23,42,0.10) !important; }
+html.light .border-white\/30    { border-color: rgba(15,23,42,0.25) !important; }
+html.light .border-red-900\/40  { border-color: rgba(220,38,38,0.25) !important; }
+
+/* --- Inputs --- */
+html.light .input-dark {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+html.light .input-dark::placeholder { color: #94a3b8 !important; }
+html.light .input-dark option { background-color: #f1f5f9; color: #0f172a; }
+
+/* --- Hero overlay (darken less in light mode) --- */
+html.light #inicio > div:first-child .bg-gradient-to-b {
+  background: linear-gradient(to bottom, rgba(241,245,249,0.5), rgba(241,245,249,0.3), rgba(241,245,249,0.95)) !important;
+}
+
+/* --- Dot grid pattern (lighten dots) --- */
+html.light [class*="bg-[radial-gradient"] {
+  opacity: 0.08 !important;
+}
+
+/* --- Theme toggle button in light mode --- */
+html.light header .border-slate-700 { border-color: #cbd5e1 !important; }
+html.light header .text-slate-400   { color: #64748b !important; }
+
+/* --- Selection --- */
+html.light ::selection {
+  background-color: #dc2626;
+  color: #ffffff;
+}

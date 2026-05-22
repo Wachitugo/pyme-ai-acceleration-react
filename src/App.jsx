@@ -12,6 +12,7 @@ import ContactModal from './components/ContactModal';
 import LegalModal from './components/LegalModal';
 
 import { useScrollAnimation } from './hooks/useScrollAnimation';
+import { useTheme } from './hooks/useTheme';
 
 const PRIVACY_TEXT = `
   <strong>Política de Privacidad de REDPY</strong><br/><br/>
@@ -60,12 +61,13 @@ function App() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const { theme, toggleTheme } = useTheme();
   useScrollAnimation();
 
   return (
     <>
       <Background />
-      <Header openModal={openModal} />
+      <Header openModal={openModal} theme={theme} toggleTheme={toggleTheme} />
 
       <main>
         <Hero />
