@@ -3,7 +3,7 @@ import { X, CheckCircle, Loader2, ChevronRight } from 'lucide-react';
 
 export default function ContactModal({ isOpen, onClose, openLegalModal }) {
     const [formData, setFormData] = useState({
-        name: '', email: '', interest: 'automation', acceptTerms: false
+        name: '', email: '', interest: 'retail', acceptTerms: false
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -156,10 +156,13 @@ export default function ContactModal({ isOpen, onClose, openLegalModal }) {
                                     <select name="interest" id="interest"
                                         value={formData.interest} onChange={handleChange}
                                         className="input-dark appearance-none cursor-pointer">
-                                        <option value="automation">Automotoras y Maquinaria</option>
-                                        <option value="health">Salud y Abogados</option>
-                                        <option value="gastro">Gastronomía y Turismo</option>
-                                        <option value="real-estate">Construcción e Inmobiliaria</option>
+                                        <option value="retail">Retail & E-commerce</option>
+                                        <option value="construction">Construcción e Infraestructura</option>
+                                        <option value="energy">Energía (Petróleo, Gas y Renovables)</option>
+                                        <option value="health">Servicios de Salud (Farmacéutica y Biotecnología)</option>
+                                        <option value="finance">Servicios Financieros y Seguros</option>
+                                        <option value="automotive">Automoción y Movilidad</option>
+                                        <option value="food">Alimentación y Bebidas (Agroindustria)</option>
                                         <option value="other">Otro rubro</option>
                                     </select>
                                 </Field>
