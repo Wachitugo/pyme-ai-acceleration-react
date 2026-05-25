@@ -25,7 +25,7 @@ export default function ContactModal({ isOpen, onClose, openLegalModal }) {
         onClose();
         setTimeout(() => {
             setIsSuccess(false);
-            setFormData({ name: '', email: '', interest: 'automation', acceptTerms: false });
+            setFormData({ name: '', email: '', interest: 'retail', acceptTerms: false });
         }, 300);
     };
 
