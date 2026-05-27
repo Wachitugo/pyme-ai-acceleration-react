@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { MessageSquare, Users, ShieldCheck, FileCheck, Scale, ChevronRight } from 'lucide-react';
+import { MessageSquare, ShieldCheck, FileCheck, Scale, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -8,21 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 const solutions = [
     {
         Icon: MessageSquare,
-        title: 'Agentes por WhatsApp',
+        title: 'Agentes de Inteligencia Artificial',
         description: 'Atención y servicio al cliente asistido con Inteligencia Artificial para mejorar el tiempo de respuesta y la contactabilidad 24/7.',
         tags: ['NLP', '24/7 Support', 'Omnichannel'],
         iconColor: 'text-red-500',
         glow: 'drop-shadow(0 4px 12px rgba(239,68,68,0.45))',
         dot: 'bg-red-500',
-    },
-    {
-        Icon: Users,
-        title: 'Vista 360 del Cliente',
-        description: 'Gestión integral de flujos comerciales con una perspectiva completa del comportamiento y necesidades del cliente.',
-        tags: ['Data Analytics', 'CRM', 'Business Flow'],
-        iconColor: 'text-orange-400',
-        glow: 'drop-shadow(0 4px 12px rgba(251,146,60,0.45))',
-        dot: 'bg-orange-400',
     },
     {
         Icon: ShieldCheck,
@@ -128,13 +119,15 @@ export default function SolucionesSection({ openModal }) {
                     })}
 
                     {/* CTA card */}
-                    <div className="sol-card bg-red-600 p-7 sm:p-8 flex flex-col justify-center items-start hover:bg-red-700 transition-all duration-300 group">
-                        <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter mb-4 leading-none italic text-white">
-                            ¿Tienes un desafío <br />específico?
-                        </h3>
-                        <p className="text-red-100 mb-8 text-sm font-light">
-                            Construimos soluciones personalizadas de alto impacto estratégico.
-                        </p>
+                    <div className="sol-card lg:col-span-2 bg-red-600 p-7 sm:p-8 flex flex-col lg:flex-row lg:items-center lg:justify-between hover:bg-red-700 transition-all duration-300 group">
+                        <div className="mb-6 lg:mb-0">
+                            <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter mb-3 leading-none italic text-white">
+                                ¿Tienes un desafío <br />específico?
+                            </h3>
+                            <p className="text-red-100 text-sm font-light">
+                                Construimos soluciones personalizadas de alto impacto estratégico.
+                            </p>
+                        </div>
                         <button
                             onClick={openModal}
                             className="flex items-center gap-2 px-6 py-3 bg-slate-950 text-white font-black uppercase tracking-widest text-xs hover:bg-slate-900 transition-colors"
