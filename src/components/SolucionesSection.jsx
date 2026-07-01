@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { MessageSquare, ShieldCheck, FileCheck, Scale, ChevronRight } from 'lucide-react';
+import { MessageSquare, ShieldCheck, FileCheck, Scale, Box, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -14,6 +14,16 @@ const solutions = [
         iconColor: 'text-red-500',
         glow: 'drop-shadow(0 4px 12px rgba(239,68,68,0.45))',
         dot: 'bg-red-500',
+    },
+    {
+        Icon: Box,
+        title: 'Auditoría Planta Ácido Sulfúrico 3D',
+        description: 'Gemelo digital interactivo para inspección virtual de infraestructura crítica con sensores en tiempo real, auditorías IA y análisis Eddy Current.',
+        tags: ['Gemelo Digital', '3D', 'Sensores Live'],
+        iconColor: 'text-cyan-400',
+        glow: 'drop-shadow(0 4px 12px rgba(34,211,238,0.45))',
+        dot: 'bg-cyan-400',
+        link: 'https://planta-cido-sulf-rico-3d-1033665533045.us-west2.run.app',
     },
     {
         Icon: ShieldCheck,
@@ -90,10 +100,15 @@ export default function SolucionesSection({ openModal }) {
                 <div className="sol-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-800 border border-slate-800">
                     {solutions.map((sol) => {
                         const { Icon, iconColor, glow, dot } = sol;
+                        const Wrapper = sol.link ? 'a' : 'div';
+                        const wrapperProps = sol.link
+                            ? { href: sol.link, target: '_blank', rel: 'noopener noreferrer' }
+                            : {};
                         return (
-                            <div
+                            <Wrapper
                                 key={sol.title}
-                                className="sol-card bg-slate-950 p-7 sm:p-8 hover:-translate-y-0.5 hover:bg-slate-900/80 transition-all duration-300 group"
+                                {...wrapperProps}
+                                className={`sol-card bg-slate-950 p-7 sm:p-8 hover:-translate-y-0.5 hover:bg-slate-900/80 transition-all duration-300 group block ${sol.link ? 'cursor-pointer' : ''}`}
                             >
                                 <div className="flex items-start gap-4">
                                     <div className={`shrink-0 mt-0.5 ${iconColor}`} style={{ filter: glow }}>
@@ -112,14 +127,20 @@ export default function SolucionesSection({ openModal }) {
                                                 </span>
                                             ))}
                                         </div>
+                                        {sol.link && (
+                                            <div className="mt-4 flex items-center gap-1.5 text-cyan-400 text-[10px] font-black uppercase tracking-widest opacity-70 group-hover:opacity-100 transition-opacity">
+                                                <span>Ver Demo</span>
+                                                <ChevronRight size={12} />
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
-                            </div>
+                            </Wrapper>
                         );
                     })}
 
                     {/* CTA card */}
-                    <div className="sol-card lg:col-span-2 bg-red-600 p-7 sm:p-8 flex flex-col lg:flex-row lg:items-center lg:justify-between hover:bg-red-700 transition-all duration-300 group">
+                    <div className="sol-card bg-red-600 p-7 sm:p-8 flex flex-col justify-between hover:bg-red-700 transition-all duration-300 group">
                         <div className="mb-6 lg:mb-0">
                             <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter mb-3 leading-none italic text-white">
                                 ¿Tienes un desafío <br />específico?
