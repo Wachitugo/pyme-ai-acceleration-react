@@ -100,15 +100,10 @@ export default function SolucionesSection({ openModal }) {
                 <div className="sol-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-800 border border-slate-800">
                     {solutions.map((sol) => {
                         const { Icon, iconColor, glow, dot } = sol;
-                        const Wrapper = sol.link ? 'a' : 'div';
-                        const wrapperProps = sol.link
-                            ? { href: sol.link, target: '_blank', rel: 'noopener noreferrer' }
-                            : {};
                         return (
-                            <Wrapper
+                            <div
                                 key={sol.title}
-                                {...wrapperProps}
-                                className={`sol-card bg-slate-950 p-7 sm:p-8 hover:-translate-y-0.5 hover:bg-slate-900/80 transition-all duration-300 group block ${sol.link ? 'cursor-pointer' : ''}`}
+                                className="sol-card bg-slate-950 p-7 sm:p-8 hover:-translate-y-0.5 hover:bg-slate-900/80 transition-all duration-300 group"
                             >
                                 <div className="flex items-start gap-4">
                                     <div className={`shrink-0 mt-0.5 ${iconColor}`} style={{ filter: glow }}>
@@ -127,15 +122,9 @@ export default function SolucionesSection({ openModal }) {
                                                 </span>
                                             ))}
                                         </div>
-                                        {sol.link && (
-                                            <div className="mt-4 flex items-center gap-1.5 text-cyan-400 text-[10px] font-black uppercase tracking-widest opacity-70 group-hover:opacity-100 transition-opacity">
-                                                <span>Ver Demo</span>
-                                                <ChevronRight size={12} />
-                                            </div>
-                                        )}
                                     </div>
                                 </div>
-                            </Wrapper>
+                            </div>
                         );
                     })}
 
