@@ -17,8 +17,8 @@ const solutions = [
     },
     {
         Icon: Box,
-        title: 'Auditoría Planta Ácido Sulfúrico 3D',
-        description: 'Gemelo digital interactivo para inspección virtual de infraestructura crítica con sensores en tiempo real, auditorías IA y análisis Eddy Current.',
+        title: 'Integración de sistemas IoT y simulación de escenarios con Machine Learning',
+        description: 'Gemelo digital interactivo para inspección virtual de infraestructura crítica con sensores en tiempo real y auditorías IA.',
         tags: ['Gemelo Digital', '3D', 'Sensores Live'],
         iconColor: 'text-cyan-400',
         glow: 'drop-shadow(0 4px 12px rgba(34,211,238,0.45))',
